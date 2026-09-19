@@ -1,0 +1,43 @@
+.local/
+__pycache__/
+.DS_Store
+Thumbs.db
+
+# Original recordings and uncompressed/source-only folders (at any depth).
+paper_videos/
+_videos/
+original*/
+uncompressed*/
+raw-videos/
+raw_videos/
+*.MOV
+*.mov
+
+# Generated production output and temporary FFmpeg files.
+dist/
+ffmpeg-temp/
+.ffmpeg/
+*.ffmpeg.log
+*.ffmpeg.tmp
+*.partial.mp4
+*.tmp.mp4
+ffmpeg2pass-*.log*
+# Final assets/videos/**/*.mp4 files are intentionally NOT ignored.
+
+# Private reports, editor state, preview exports, and unused local assets.
+/VIDEO_ASSETS.md
+.vscode/
+.idea/
+.codex/
+.agents/
+.env
+.env.*
+*.log
+*.tmp
+*.bak
+*preview*.pdf
+*printout*.pdf
+/assets/images/fleet-results.webp
+/assets/images/interfaces.webp
+/assets/images/learning-protocol.webp
+/assets/images/paper-preview.webp

@@ -1,0 +1,54 @@
+{
+  "videos": [
+    {
+      "output": "assets/videos/demonstrations/desktop-rgb-kt-cups.mp4",
+      "size_bytes": 16128240,
+      "sha256": "f243e4a85aa0dd7b8f67146422dd56afd4ada2a1cd1df649936dfe3eb70dc274"
+    },
+    {
+      "output": "assets/videos/demonstrations/desktop-rgb-kt-tshape.mp4",
+      "size_bytes": 12126803,
+      "sha256": "54446b5edc8d03e285c97e6922106245019bc901ef03b9d08230cee9c832c7c9"
+    },
+    {
+      "output": "assets/videos/demonstrations/vr-rgb-kt-cups.mp4",
+      "size_bytes": 24756038,
+      "sha256": "695a7105c75e5002821a8b0d1b74a596624f8fa57ca33c5392ee758e4ef3a15c"
+    },
+    {
+      "output": "assets/videos/demonstrations/vr-rgb-kt-tshape.mp4",
+      "size_bytes": 11371920,
+      "sha256": "195694476cb00e5d6acaff696e41b298f8a6cc28e16202ec4e8680a9aa027088"
+    },
+    {
+      "output": "assets/videos/demonstrations/vr-pointcloud-kt-cups.mp4",
+      "size_bytes": 16461926,
+      "sha256": "cb49a769059d6dd7ba10eb4dd75540652c38dec7612c81545f872c80c9bb9dcd"
+    },
+    {
+      "output": "assets/videos/demonstrations/vr-pointcloud-kt-tshape.mp4",
+      "size_bytes": 14158121,
+      "sha256": "0e6fcc9da2065e1a5fce114efee7cb63d3df0a55ef41331970d313873278c93e"
+    },
+    {
+      "output": "assets/videos/demonstrations/vr-pointcloud-mc-cups.mp4",
+      "size_bytes": 12575970,
+      "sha256": "7511520262b82e5b717699e59b4297dde3c804c25a7fa06cc79828c57fe5e5ad"
+    },
+    {
+      "output": "assets/videos/demonstrations/vr-pointcloud-mc-tshape.mp4",
+      "size_bytes": 8942581,
+      "sha256": "3522a9ba9e69a7d1f69dc7379daa1fa3b468169dbdee2f41cc2568bab022b71b"
+    },
+    {
+      "output": "assets/videos/demonstrations/vr-pointcloud-factr-cups.mp4",
+      "size_bytes": 14529473,
+      "sha256": "1a5e1f969c01936d2b92b7e65855e07a1c3544f8a9e907514d8e7b269fdae87c"
+    },
+    {
+      "output": "assets/videos/demonstrations/vr-pointcloud-factr-tshape.mp4",
+      "size_bytes": 15455650,
+      "sha256": "755eebe798db74e9779740440cc4b70b25ff9eb440799f5e426ce8ea11a2e02f"
+    }
+  ]
+}

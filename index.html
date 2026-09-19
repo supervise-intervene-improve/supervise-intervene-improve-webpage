@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="An anonymous research project on selective human intervention for multiple autonomous manipulators. Three independent studies examine supervision, corrective control, and fleet size. Offline learning is an ongoing evaluation; no learning result is reported.">
+  <meta name="author" content="Anonymous Authors">
+  <meta name="referrer" content="no-referrer">
+  <title>Supervise, Intervene, Improve | Paper Submitted to ACM HRI 2027</title>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260919-2">
+  <link rel="stylesheet" href="assets/css/demonstrations.css?v=20260919-2">
+  <script src="assets/js/main.js?v=editorial-1" defer></script>
+  <script src="assets/js/demonstrations.js?v=pages-1" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-paper" viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8zM14 3v5h5M9 12h6M9 16h6"/></symbol>
+    <symbol id="icon-supplement" viewBox="0 0 24 24"><path d="M8 3h11v14H8zM5 7H3v14h12v-2M11 7h5M11 11h5"/></symbol>
+    <symbol id="icon-code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+    <symbol id="icon-expand" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6m0 6 7-7"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+  </svg>
+
+  <header class="hero container">
+    <h1><span class="title-lead">Supervise, Intervene, Improve:</span><span class="title-detail">Interface Design for Human Oversight of<br class="desktop-break"> Multiple Autonomous Robot Manipulators</span></h1>
+    <p class="authors">Anonymous Authors</p>
+    <p class="submission">Paper Submitted to ACM HRI 2027</p>
+    <!-- RESOURCE URLS: all three resources are temporarily disabled. Add an href here to enable one.
+         The local paper is assets/paper/paper.pdf.
+         Use relative paths for local PDFs and an anonymous HTTPS URL for code.
+         main.js enables resources once an href is provided. -->
+    <div class="resource-links" id="resources" aria-label="Project resources">
+      <a class="resource-button" data-resource="paper" role="link" aria-disabled="true" title="Paper link temporarily disabled"><svg class="icon" aria-hidden="true"><use href="#icon-paper"/></svg>Paper<span class="sr-only"> (temporarily disabled)</span></a>
+      <a class="resource-button" data-resource="supplementary" role="link" aria-disabled="true" title="Supplementary PDF not yet available"><svg class="icon" aria-hidden="true"><use href="#icon-supplement"/></svg>Supplementary<span class="sr-only"> (not yet available)</span></a>
+      <a class="resource-button" data-resource="code" role="link" aria-disabled="true" title="Anonymous code link not yet available"><svg class="icon" aria-hidden="true"><use href="#icon-code"/></svg>Code<span class="sr-only"> (not yet available)</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="abstract-band" id="abstract" aria-labelledby="abstract-title">
+      <div class="prose">
+        <h2 id="abstract-title">Abstract</h2>
+        <p>Selective human intervention allows one operator to support multiple autonomous manipulators while collecting corrective demonstrations for policy learning. Its effectiveness depends on how operators inspect robot scenes, provide corrections, and manage concurrent requests for assistance. We present Supervise–Intervene–Improve, a risk-informed framework linking supervision, corrective control, and intervention-data collection for offline learning.</p>
+        <p>Three independent user studies with 72 participants evaluate visualization, corrective-control interfaces, and fleet size during simulated manipulation. We compare Desktop-RGB, VR-RGB, and VR-PointCloud visualization; Kinesthetic Teaching, Motion Controller, and FACTR teleoperation; and fleets of one to nine robots.</p>
+        <p>VR-PointCloud visualization improved recovery and shortened corrections relative to both RGB interfaces. Kinesthetic Teaching achieved higher recovery than Motion Controller in the primary analysis, although the result was sensitive to the analysis specification and did not reach corrected significance in two sensitivity analyses. Kinesthetic Teaching also required more total intervention time than Motion Controller. Increasing fleet size reduced intervention coverage and delayed assistance. Useful intervention throughput increased descriptively, but the corrected statistical evidence was inconclusive. These findings show that scalable human oversight requires interfaces that support effective corrections alongside timely access to assistance.</p>
+      </div>
+    </section>
+
+    <section class="section container" id="overview" aria-labelledby="overview-title">
+      <header class="section-header">
+        <h2 id="overview-title">Supervise–Intervene–Improve</h2>
+        <p class="section-subtitle">One operator. Selective assistance. Multiple autonomous cells.</p>
+      </header>
+      <figure class="paper-figure">
+        <a class="figure-link" href="assets/images/workflow.webp" data-figure data-caption="Figure 1. Selective-intervention workflow linking scene inspection, corrective control, and intervention-data capture. All imagery and trajectories are illustrative. The depicted policy update is conceptual; no offline-learning result is reported. Source: Paper Fig. 1." aria-label="Enlarge Figure 1: selective-intervention workflow">
+          <img src="assets/images/workflow.webp" width="2272" height="1022" alt="Three-stage workflow: inspect cells with risk cues; prepare a controller and correct one paused cell; retain active correction segments for a planned offline policy update. Base and improved policy scenes are conceptual illustrations.">
+          <span class="figure-enlarge"><svg class="icon" aria-hidden="true"><use href="#icon-expand"/></svg>Enlarge figure</span>
+        </a>
+        <figcaption><strong>Figure 1.</strong> Selective-intervention workflow linking scene inspection, corrective control, and intervention-data capture. All imagery and trajectories are illustrative. The depicted policy update is conceptual; no offline-learning result is reported. Source: Paper Fig. 1.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section container ruled" id="studies" aria-labelledby="studies-title">
+      <header class="section-header">
+        <h2 id="studies-title">Three Studies of Human Oversight</h2>
+        <p class="study-count"><strong>72</strong> participants <span aria-hidden="true">·</span> <strong>3</strong> independent studies <span aria-hidden="true">·</span> <strong>24</strong> participants per study</p>
+      </header>
+      <div class="study-grid">
+        <article class="study">
+          <span class="eyebrow">Study 01</span><h3>Supervision Study</h3>
+          <p class="study-question">How should operators inspect remote robot scenes?</p>
+          <h4>Conditions</h4><ul><li>Desktop-RGB</li><li>VR-RGB</li><li>VR-PointCloud</li></ul>
+          <h4>Fixed configuration</h4><p>Kinesthetic Teaching<br>Nine cells · Both tasks</p>
+          <a class="text-link" href="#supervision">Supervision Study results <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="study">
+          <span class="eyebrow">Study 02</span><h3>Control Study</h3>
+          <p class="study-question">How should operators take control and correct a robot?</p>
+          <h4>Conditions</h4><ul><li>Kinesthetic Teaching (KT)</li><li>Motion Controller (MC)</li><li>FACTR</li></ul>
+          <h4>Fixed configuration</h4><p>VR-PointCloud<br>Nine cells · Both tasks</p>
+          <a class="text-link" href="#control">Control Study results <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="study">
+          <span class="eyebrow">Study 03</span><h3>Fleet Study</h3>
+          <p class="study-question">How does fleet size affect access to human assistance?</p>
+          <h4>Conditions</h4><ul class="fleet-conditions"><li>F1 <span>1 cell</span></li><li>F3 <span>3 cells</span></li><li>F6 <span>6 cells</span></li><li>F9 <span>9 cells</span></li></ul>
+          <h4>Fixed configuration</h4><p>Kinesthetic Teaching · VR-PointCloud<br>T-Shape Assembly</p>
+          <a class="text-link" href="#scaling">Fleet Study results <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+      <p class="section-note">Three within-subjects study designs (Paper Table 1), with 24 participants per cohort. Each participant experienced all conditions of one study. “Both tasks” refers to T-Shape Assembly and Cup Insertion. Manipulation was simulated, with physical input devices; autonomous policies remained fixed during the studies.</p>
+      <p class="analysis-note"><strong>Each study used an independent participant cohort.</strong> The design supports within-study comparisons but not direct cross-study recovery comparisons or supervision-by-controller interaction claims.</p>
+    </section>
+
+    <section class="section container ruled" id="supervision" aria-labelledby="supervision-title">
+      <header class="section-header"><span class="eyebrow">Study 01: Supervision Study</span><h2 id="supervision-title">Supervision Interface</h2><p class="section-subtitle">How should operators see the scene?</p></header>
+      <div class="interface-grid">
+        <figure><img src="assets/images/supervision-desktop.webp" width="428" height="393" loading="lazy" alt="Desktop-RGB interface showing a selected robot scene on a monitor."><figcaption><h3>Desktop-RGB</h3><p>Four camera views on a desktop display.</p><button class="demo-toggle" type="button" id="demo-supervision-desktop-rgb-button" data-demo-trigger data-demo-key="desktop-rgb" aria-expanded="false" aria-controls="demo-supervision-panel" hidden><svg class="demo-icon demo-play" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z"/></svg><span data-demo-label>Video demonstration</span><svg class="demo-icon demo-chevron" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg><span class="sr-only"> for Desktop-RGB</span></button></figcaption></figure>
+        <figure><img src="assets/images/supervision-vr-rgb.webp" width="429" height="393" loading="lazy" alt="VR-RGB interface with flat camera views of the simulated manipulation scene."><figcaption><h3>VR-RGB</h3><p>The same camera views presented in VR.</p><button class="demo-toggle" type="button" id="demo-supervision-vr-rgb-button" data-demo-trigger data-demo-key="vr-rgb" aria-expanded="false" aria-controls="demo-supervision-panel" hidden><svg class="demo-icon demo-play" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z"/></svg><span data-demo-label>Video demonstration</span><svg class="demo-icon demo-chevron" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg><span class="sr-only"> for VR-RGB</span></button></figcaption></figure>
+        <figure><img src="assets/images/supervision-vr-pointcloud.webp" width="429" height="393" loading="lazy" alt="VR-PointCloud interface showing fused three-dimensional geometry of the robot and task objects."><figcaption><h3>VR-PointCloud</h3><p>Fused geometry for spatial inspection.</p><button class="demo-toggle" type="button" id="demo-supervision-vr-pointcloud-button" data-demo-trigger data-demo-key="vr-pointcloud" aria-expanded="false" aria-controls="demo-supervision-panel" hidden><svg class="demo-icon demo-play" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z"/></svg><span data-demo-label>Video demonstration</span><svg class="demo-icon demo-chevron" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg><span class="sr-only"> for VR-PointCloud</span></button></figcaption></figure>
+      </div>
+      <div class="demo-disclosure" data-demo-study="supervision" aria-hidden="true" inert>
+        <div class="demo-collapse">
+          <section class="demo-panel" id="demo-supervision-panel" role="region" aria-labelledby="demo-supervision-title"></section>
+        </div>
+      </div>
+      <noscript><p class="section-note">Enable JavaScript to view the video demonstrations.</p></noscript>
+      <p class="image-credit"><strong>Figure 2. Supervision interfaces.</strong> Shown during T-Shape Assembly. Adapted from Paper Fig. 4, top row.</p>
+      <figure class="paper-figure preference-figure">
+        <a class="figure-link" href="assets/images/supervision-preferences.svg" data-figure data-caption="Figure 3. Supervision Study rankings and preferences. Overall ranking distributions and first-choice shares for each criterion, with 24 respondents per question. Rank 1 is most preferred; labels show rounded percentages. Adapted from Paper Fig. 9a." aria-label="Enlarge Figure 3: Supervision Study rankings and preferences">
+          <picture><source media="(max-width: 680px)" srcset="assets/images/supervision-preferences-mobile.svg" width="313" height="239"><img src="assets/images/supervision-preferences.svg" width="430" height="248" loading="lazy" alt="Supervision preferences, in Desktop-RGB, VR-RGB, VR-PointCloud order. Overall rank 1: 4%, 0%, 96%; rank 2: 67%, 29%, 4%; rank 3: 29%, 71%, 0%. Spatial: 4%, 0%, 96%; intervention need: 25%, 13%, 63%; comfort: 0%, 42%, 58%; long-term: 0%, 33%, 67%."></picture>
+          <span class="figure-enlarge"><svg class="icon" aria-hidden="true"><use href="#icon-expand"/></svg>Enlarge figure</span>
+        </a>
+        <figcaption><strong>Figure 3. Supervision Study rankings and preferences.</strong> Overall ranking distributions and first-choice shares for each criterion, with 24 respondents per question. Rank 1 is most preferred; labels show rounded percentages. Adapted from Paper Fig. 9a.</figcaption>
+      </figure>
+      <p class="finding"><strong>VR-PointCloud supported higher recovery and shorter active corrections than both RGB interfaces.</strong> Both recovery and timing contrasts against each RGB condition survived Holm correction.</p>
+      <figure class="paper-figure result-figure">
+        <a class="figure-link" href="assets/images/supervision-results.webp" data-figure data-caption="Figure 4. Supervision Study results for 24 participants, comprising 708 retained attempts and 631 known recovery outcomes. Objective plots retain the 95% confidence intervals; spatial-understanding ratings show the median and interquartile range. Source: Paper Fig. 5." aria-label="Enlarge Figure 4: Supervision Study results">
+          <img src="assets/images/supervision-results.webp" width="2183" height="972" loading="lazy" alt="Supervision Study plots showing recovery, active correction time, spatial understanding, and recovery odds ratios. Recovery is 68.4%, 56.0%, and 83.6% for Desktop-RGB, VR-RGB, and VR-PointCloud; active times are 43.3, 46.4, and 28.9 seconds.">
+          <span class="figure-enlarge"><svg class="icon" aria-hidden="true"><use href="#icon-expand"/></svg>Enlarge figure</span>
+        </a>
+        <figcaption><strong>Figure 4. Supervision Study results</strong> for 24 participants, comprising 708 retained attempts and 631 known recovery outcomes. Objective plots retain the 95% confidence intervals; spatial-understanding ratings show the median and interquartile range. Source: Paper Fig. 5.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section container ruled" id="control" aria-labelledby="control-title">
+      <header class="section-header"><span class="eyebrow">Study 02: Control Study</span><h2 id="control-title">Corrective Control</h2><p class="section-subtitle">How should the operator intervene?</p></header>
+      <div class="interface-grid">
+        <figure><img src="assets/images/control-kt.webp" width="428" height="395" loading="lazy" alt="Physical Panda robot used for gravity-compensated Kinesthetic Teaching of the simulated robot."><figcaption><h3>Kinesthetic Teaching <span>(KT)</span></h3><p>Guide an aligned physical robot.</p><button class="demo-toggle" type="button" id="demo-control-kt-button" data-demo-trigger data-demo-key="kt" aria-expanded="false" aria-controls="demo-control-panel" hidden><svg class="demo-icon demo-play" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z"/></svg><span data-demo-label>Video demonstration</span><svg class="demo-icon demo-chevron" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg><span class="sr-only"> for Kinesthetic Teaching</span></button></figcaption></figure>
+        <figure><img src="assets/images/control-mc.webp" width="429" height="395" loading="lazy" alt="VR headset and tracked controllers used for Motion Controller interaction."><figcaption><h3>Motion Controller <span>(MC)</span></h3><p>Map tracked motion to the end effector.</p><button class="demo-toggle" type="button" id="demo-control-mc-button" data-demo-trigger data-demo-key="mc" aria-expanded="false" aria-controls="demo-control-panel" hidden><svg class="demo-icon demo-play" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z"/></svg><span data-demo-label>Video demonstration</span><svg class="demo-icon demo-chevron" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg><span class="sr-only"> for Motion Controller</span></button></figcaption></figure>
+        <figure><img src="assets/images/control-factr.webp" width="429" height="395" loading="lazy" alt="FACTR articulated leader device used to guide corrective robot motion."><figcaption><h3>FACTR</h3><p>Guide an aligned articulated leader.</p><button class="demo-toggle" type="button" id="demo-control-factr-button" data-demo-trigger data-demo-key="factr" aria-expanded="false" aria-controls="demo-control-panel" hidden><svg class="demo-icon demo-play" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7Z"/></svg><span data-demo-label>Video demonstration</span><svg class="demo-icon demo-chevron" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg><span class="sr-only"> for FACTR</span></button></figcaption></figure>
+      </div>
+      <div class="demo-disclosure" data-demo-study="control" aria-hidden="true" inert>
+        <div class="demo-collapse">
+          <section class="demo-panel" id="demo-control-panel" role="region" aria-labelledby="demo-control-title"></section>
+        </div>
+      </div>
+      <noscript><p class="section-note">Enable JavaScript to view the video demonstrations.</p></noscript>
+      <p class="image-credit"><strong>Figure 5. Corrective-control interfaces.</strong> Physical input devices; robot manipulation took place in simulation. Adapted from Paper Fig. 4, bottom row.</p>
+      <figure class="paper-figure preference-figure">
+        <a class="figure-link" href="assets/images/control-preferences.svg" data-figure data-caption="Figure 6. Control Study rankings and preferences. Overall ranking distributions and first-choice shares for each criterion, with 24 respondents per question. Labels show rounded percentages. These shares are descriptive; the complete overall ranking comparison was inconclusive. Adapted from Paper Fig. 9b." aria-label="Enlarge Figure 6: Control Study rankings and preferences">
+          <picture><source media="(max-width: 680px)" srcset="assets/images/control-preferences-mobile.svg" width="298" height="239"><img src="assets/images/control-preferences.svg" width="415" height="248" loading="lazy" alt="Controller preferences, in KT, MC, FACTR order. Overall rank 1: 42%, 54%, 4%; rank 2: 42%, 4%, 54%; rank 3: 17%, 42%, 42%. Precision: 75%, 25%, 0%; mapping: 58%, 29%, 13%; naturalness: 63%, 17%, 21%; repeated use: 63%, 25%, 13%."></picture>
+          <span class="figure-enlarge"><svg class="icon" aria-hidden="true"><use href="#icon-expand"/></svg>Enlarge figure</span>
+        </a>
+        <figcaption><strong>Figure 6. Control Study rankings and preferences.</strong> Overall ranking distributions and first-choice shares for each criterion, with 24 respondents per question. Labels show rounded percentages. These shares are descriptive; the complete overall ranking comparison was inconclusive. Adapted from Paper Fig. 9b.</figcaption>
+      </figure>
+      <p class="finding"><strong>KT exceeded MC in recovery in the primary analysis, although the recovery contrast was sensitive to the analysis specification.</strong> KT and MC enabled shorter active corrections than FACTR. Neither recovery contrast involving FACTR survived Holm correction. KT’s total intervention time, which includes preparation, was longer than MC’s.</p>
+      <p class="analysis-note"><strong>Analysis sensitivity.</strong> The KT–MC recovery contrast did not reach the corrected significance threshold in participant-summary or short-attempt sensitivity analyses. The direction was consistent, but the statistical evidence depended on these analysis choices.</p>
+      <figure class="paper-figure result-figure">
+        <a class="figure-link" href="assets/images/control-results.webp" data-figure data-caption="Figure 7. Control Study results for 24 participants, comprising 910 retained attempts and 857 known recovery outcomes. Original estimates and 95% confidence intervals are shown; perceived-control ratings show the median and interquartile range. Source: Paper Fig. 6." aria-label="Enlarge Figure 7: Control Study results">
+          <img src="assets/images/control-results.webp" width="2174" height="968" loading="lazy" alt="Control Study plots with recovery of 88.9%, 78.3%, and 84.7% and active corrections of 29.3, 29.5, and 35.2 seconds for KT, MC, and FACTR. Additional panels show throughput, perceived control, and pairwise recovery and timing comparisons.">
+          <span class="figure-enlarge"><svg class="icon" aria-hidden="true"><use href="#icon-expand"/></svg>Enlarge figure</span>
+        </a>
+        <figcaption><strong>Figure 7. Control Study results</strong> for 24 participants, comprising 910 retained attempts and 857 known recovery outcomes. Original estimates and 95% confidence intervals are shown; perceived-control ratings show the median and interquartile range. Source: Paper Fig. 6.</figcaption>
+      </figure>
+    </section>
+
+    <section class="scaling-band" id="scaling" aria-labelledby="scaling-title">
+      <div class="container section">
+        <header class="section-header"><span class="eyebrow">Study 03: Fleet Study</span><h2 id="scaling-title">Scaling Human Oversight</h2><p class="section-subtitle">What happens as one operator supervises more robots?</p></header>
+        <p class="scaling-lead">Successful corrections alone do not ensure<br class="desktop-break"> that every robot receives assistance.</p>
+        <div class="fleet-key" aria-label="Fleet conditions"><span><strong>F1</strong> 1 cell</span><span><strong>F3</strong> 3 cells</span><span><strong>F6</strong> 6 cells</span><span><strong>F9</strong> 9 cells</span></div>
+        <div class="fleet-plots">
+          <figure><a class="figure-link" href="assets/images/fleet-coverage.webp" data-figure data-caption="Figure 8. Coverage of assistance needs. Coverage decreased across fleet sizes, and all pairwise contrasts survived correction. Adapted from Paper Fig. 7b." aria-label="Enlarge Figure 8: coverage of assistance needs"><img src="assets/images/fleet-coverage.webp" width="745" height="590" loading="lazy" alt="Coverage falls from 95.7% in F1 to 53.0% in F3, 23.4% in F6, and 15.6% in F9. Original 95% confidence intervals are shown."></a><figcaption><h3>Figure 8. Coverage of assistance needs.</h3><p>Coverage decreased across fleet sizes, and all pairwise contrasts survived correction. Adapted from Paper Fig. 7b.</p></figcaption></figure>
+          <figure><a class="figure-link" href="assets/images/fleet-delay.webp" data-figure data-caption="Figure 9. Response delay among intercepted needs. F3, F6, and F9 produced longer delays than F1. Comparisons among the larger fleet conditions were inconclusive. Adapted from Paper Fig. 7c." aria-label="Enlarge Figure 9: response delay among intercepted needs"><img src="assets/images/fleet-delay.webp" width="750" height="590" loading="lazy" alt="Response delay among intercepted needs: F1 6.6 seconds, F3 17.7 seconds, F6 22.0 seconds, and F9 21.1 seconds, with original 95% confidence intervals."></a><figcaption><h3>Figure 9. Response delay among intercepted needs.</h3><p>F3, F6, and F9 produced longer delays than F1. Comparisons among the larger fleet conditions were inconclusive. Adapted from Paper Fig. 7c.</p></figcaption></figure>
+          <figure><a class="figure-link" href="assets/images/fleet-throughput.webp" data-figure data-caption="Figure 10. Useful intervention throughput. Useful intervention throughput increased descriptively, but the evidence was inconclusive after correction. Omnibus p = .065; F9/F1 Holm-adjusted p = .080. Adapted from Paper Fig. 7a." aria-label="Enlarge Figure 10: useful intervention throughput"><img src="assets/images/fleet-throughput.webp" width="740" height="590" loading="lazy" alt="Throughput is 0.798, 0.946, 1.026, and 1.051 useful interventions per minute in F1, F3, F6, and F9. The omnibus test is inconclusive, p = .065; F9/F1 Holm-adjusted p = .080."></a><figcaption><h3>Figure 10. Useful intervention throughput.</h3><p>Useful intervention throughput increased descriptively, but the evidence was inconclusive after correction. Omnibus <i>p</i> = .065; F9/F1 Holm-adjusted <i>p</i><sub>H</sub> = .080. Adapted from Paper Fig. 7a.</p></figcaption></figure>
+        </div>
+        <div class="metric-notes"><p><strong>Coverage</strong> is the proportion of recorded assistance needs that reached human-control start.</p><p><strong>Response delay</strong> is measured from need onset to human-control start, among intercepted needs only; estimates are geometric means.</p><p><strong>Useful intervention throughput</strong> counts tasks completed at the first valid post-release check per minute of condition time.</p></div>
+        <p class="section-note">24 participants · 95 eligible blocks · 2,663 recorded needs · 756 interceptions. Larger fleets change both visual burden and total demand; these findings do not define a universal operator-capacity threshold.</p>
+        <figure class="paper-figure preference-figure fleet-preferences">
+          <h3>Fleet-size preferences</h3>
+          <div class="preference-legend" aria-label="Chart legend, from left to right"><span><i class="fleet-swatch f1" aria-hidden="true"></i>F1</span><span><i class="fleet-swatch f3" aria-hidden="true"></i>F3</span><span><i class="fleet-swatch f6" aria-hidden="true"></i>F6</span><span><i class="fleet-swatch f9" aria-hidden="true"></i>F9</span></div>
+          <a class="figure-link" href="assets/images/fleet-preferences.svg" data-figure data-caption="Figure 11. Fleet Study preferences. Fleet-size choices for sustainable supervision and overall balance, with 24 respondents per question. Labels show rounded percentages. F3 was most frequently selected; preference does not establish an optimal fleet size. Adapted from Paper Fig. 9c." aria-label="Enlarge Figure 11: Fleet Study preferences">
+            <picture><source media="(max-width: 680px)" srcset="assets/images/fleet-preferences-mobile.svg" width="341" height="149"><img src="assets/images/fleet-preferences.svg" width="700" height="112" loading="lazy" alt="Fleet preferences, in F1, F3, F6, F9 order. Sustainable size: 17%, 42%, 29%, 13%. Best balance: 8%, 54%, 33%, 4%. F3 was most frequently chosen for both questions."></picture>
+            <span class="figure-enlarge"><svg class="icon" aria-hidden="true"><use href="#icon-expand"/></svg>Enlarge figure</span>
+          </a>
+          <figcaption><strong>Figure 11. Fleet Study preferences.</strong> Fleet-size choices for sustainable supervision and overall balance, with 24 respondents per question. Labels show rounded percentages. F3 was most frequently selected; preference does not establish an optimal fleet size. Adapted from Paper Fig. 9c.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section container ruled" id="limitations" aria-labelledby="limitations-title">
+      <header class="section-header"><h2 id="limitations-title">Scope and Limitations</h2></header>
+      <div class="prose">
+        <ul>
+          <li>Manipulation took place in simulation, although corrections used physical input devices.</li>
+          <li>The three studies used independent cohorts and a nonfactorial design.</li>
+          <li>The Supervision Study compared complete interface configurations; representation and display modality were not independently isolated.</li>
+          <li>The Fleet Study covered one task and one demand policy, so it does not establish a universal operator-capacity threshold.</li>
+          <li>The learning value of the collected corrections remains an open empirical question.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section container ruled" id="conclusion" aria-labelledby="conclusion-title">
+      <header class="section-header"><h2 id="conclusion-title">Conclusion</h2></header>
+      <div class="prose">
+        <p>Supervise–Intervene–Improve links risk-informed supervision, selective correction, and intervention-data collection for offline learning. Across three independent studies, VR-PointCloud supported higher task-averaged recovery and faster correction than RGB interfaces. Kinesthetic Teaching achieved higher recovery than Motion Controller in the primary analysis, but preparation costs increased total intervention time relative to Motion Controller. The recovery contrast was sensitive to the analysis specification and did not reach corrected significance in participant-summary and short-attempt sensitivity analyses.</p>
+        <p>Larger fleets reduced coverage and delayed assistance: successful corrections alone do not ensure timely support for every robot. Effective oversight therefore requires interfaces that support scene understanding and corrective control while accounting for operator time and access to assistance. Whether the collected corrections improve subsequent autonomous performance remains an open empirical question.</p>
+      </div>
+    </section>
+
+    <!-- Citation section intentionally omitted during anonymous review. -->
+  </main>
+  <footer class="site-footer"><p>Anonymous project page accompanying an under-review manuscript.</p><a href="assets/paper/paper.pdf">Paper</a></footer>
+
+
+  <template id="demo-content-template">
+    <div class="demo-content">
+      <header class="demo-header">
+        <div class="demo-heading"><span class="demo-kicker">Video demonstration</span><h3 class="demo-title"></h3></div>
+        <button class="demo-close" type="button" aria-label="Close video demonstration"><svg class="demo-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
+      </header>
+      <div class="demo-tabs" role="tablist" aria-label="Demonstration environment">
+        <button class="demo-tab" type="button" role="tab" data-demo-task="cups" aria-selected="true" tabindex="0">Cups</button>
+        <button class="demo-tab" type="button" role="tab" data-demo-task="tshape" aria-selected="false" tabindex="-1">T-Shape Assembly</button>
+      </div>
+      <div class="demo-task-panel" role="tabpanel" data-demo-task-panel="cups">
+        <div class="demo-video-stage">
+          <canvas class="demo-ambient" width="480" height="270" aria-hidden="true"></canvas>
+          <video class="demo-video" controls playsinline preload="metadata"></video>
+          <canvas class="demo-crossfade" width="960" height="540" aria-hidden="true"></canvas>
+        </div>
+      </div>
+      <div class="demo-task-panel" role="tabpanel" data-demo-task-panel="tshape" hidden></div>
+      <p class="demo-caption"></p>
+      <p class="demo-error" role="status" hidden>This demonstration could not be loaded. <a>Open the video directly</a>.</p>
+    </div>
+  </template>
+
+  <dialog class="figure-dialog" aria-labelledby="figure-dialog-title">
+    <div class="dialog-header"><h2 id="figure-dialog-title">Paper figure</h2><div class="dialog-actions"><button class="dialog-zoom" type="button" aria-pressed="false">Zoom in</button><a class="dialog-original" href="#overview" target="_blank" rel="noopener">Open image <span class="sr-only">in a new tab</span><span aria-hidden="true">↗</span></a><button class="dialog-close" type="button" aria-label="Close figure"><svg class="icon" aria-hidden="true"><use href="#icon-close"/></svg></button></div></div>
+    <div class="dialog-viewport" tabindex="0" role="region" aria-label="Enlarged figure; scroll to explore when zoomed"><img class="dialog-image" alt=""></div>
+    <p class="dialog-caption"></p>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,61 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Build production site
+        run: python scripts/build_site.py
+      - name: Verify publication artifact
+        shell: python
+        run: |
+          from pathlib import Path
+          import json
+          assert Path('dist/index.html').is_file()
+          assert Path('dist/.nojekyll').is_file()
+          videos = json.loads(Path('assets/videos/manifest.json').read_text())['videos']
+          assert len(videos) == 10
+          for video in videos:
+              output = Path('dist') / video['output']
+              assert output.is_file()
+              assert output.stat().st_size == video['size_bytes']
+              assert output.stat().st_size < 95 * 1024 * 1024
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
