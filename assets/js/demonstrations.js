@@ -44,7 +44,7 @@ function initializeDemonstrations(study, cards) {
   const disclosure = section?.querySelector(".demo-disclosure");
   const template = document.getElementById("demo-content-template");
   // Progressive enhancement: never reveal bare controls if component CSS fails.
-  if (!disclosure || !template || getComputedStyle(disclosure).getPropertyValue("--demo-component-ready").trim() !== "1") return;
+  if (!disclosure || !template || getComputedStyle(disclosure).getPropertyValue("--demo-component-ready").trim() !== "1") return false;
 
   const triggers = [...section.querySelectorAll("[data-demo-trigger]")];
   const panel = disclosure.querySelector(".demo-panel");
@@ -316,7 +316,19 @@ function initializeDemonstrations(study, cards) {
   window.addEventListener("resize", updateOrigin, { passive: true });
 }
 
-for (const [study, cards] of Object.entries(demonstrations)) initializeDemonstrations(study, cards);
+// Initialize each study once its component CSS has been applied. If the stylesheet
+// is not ready when this script runs, retry after the page has fully loaded.
+const initializedStudies = new Set();
+function initializeAllDemonstrations() {
+  for (const [study, cards] of Object.entries(demonstrations)) {
+    if (!initializedStudies.has(study) && initializeDemonstrations(study, cards) !== false) initializedStudies.add(study);
+  }
+}
+initializeAllDemonstrations();
+if (initializedStudies.size < Object.keys(demonstrations).length) {
+  if (document.readyState === "complete") requestAnimationFrame(initializeAllDemonstrations);
+  else window.addEventListener("load", initializeAllDemonstrations, { once: true });
+}
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) for (const player of demoPlayers) player.pause();
 });
