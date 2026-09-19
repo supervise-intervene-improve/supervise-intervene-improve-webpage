@@ -113,11 +113,8 @@ figcaption strong { font-weight: 600; color: var(--body); }
 .scaling-lead { text-align: center; font-size: 24px; font-weight: 500; line-height: 1.5; letter-spacing: -.4px; color: var(--ink); max-width: 760px; margin: 0 auto 24px; }
 .fleet-key { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 32px; font-size: 14px; color: var(--muted); margin-bottom: 38px; }
 .fleet-key strong { margin-right: 5px; }
-.fleet-plots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.fleet-plots img { width: 100%; background: #fff; border-radius: 3px; }
-.fleet-plots figcaption { margin-top: 20px; }
-.fleet-plots h3 { font-size: 17px; line-height: 1.4; }
-.fleet-plots p { font-size: 14px; margin-top: 8px; }
+.fleet-figure { margin-bottom: 34px; }
+.fleet-figure img { background: #fff; border-radius: 3px; }
 .metric-notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; font-size: 13px; color: var(--muted); line-height: 1.7; }
 .metric-notes p + p { margin-top: 0; }
 .metric-notes strong { display: block; margin-bottom: 3px; }
@@ -136,6 +133,8 @@ figcaption strong { font-weight: 600; color: var(--body); }
 .site-footer { border-top: 1px solid var(--line); max-width: var(--width); margin-inline: auto; padding: 26px 24px 32px; display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 12px; }
 .site-footer a { color: var(--muted); text-decoration: none; }
 .site-footer a:hover { text-decoration: underline; }
+.footer-links { display: flex; gap: 18px; }
+.site-footer a[aria-disabled="true"] { display: none; }
 .figure-dialog { padding: 0; width: min(1280px, 94vw); max-width: 94vw; max-height: 94dvh; border: 1px solid var(--line); border-radius: 6px; color: var(--body); background: #fff; }
 .figure-dialog[open] { display: flex; flex-direction: column; }
 .figure-dialog::backdrop { background: #19222bbf; }
@@ -158,8 +157,6 @@ body.dialog-open { overflow: hidden; }
   .study-question { min-height: 100px; }
   .interface-grid h3 { font-size: 16px; }
   .learning-layout { gap: 26px; }
-  .fleet-plots { gap: 20px; }
-  .fleet-plots h3 { font-size: 16px; }
 }
 @media (max-width: 680px) {
   body { font-size: 16px; }
@@ -207,11 +204,6 @@ body.dialog-open { overflow: hidden; }
   .section-note { font-size: 12px; margin-top: 24px; }
   .scaling-lead { font-size: 22px; }
   .fleet-key { gap: 10px 20px; font-size: 13px; margin-bottom: 29px; }
-  .fleet-plots { grid-template-columns: 1fr; gap: 32px; max-width: 410px; margin-inline: auto; }
-  .fleet-plots figure { display: flex; flex-direction: column; }
-  .fleet-plots figcaption { margin-top: 12px; }
-  .fleet-plots h3 { font-size: 18px; }
-  .fleet-plots p { font-size: 14px; }
   .metric-notes { grid-template-columns: 1fr; gap: 13px; font-size: 12px; }
   .metric-notes strong { display: inline; }
   .experience-grid { grid-template-columns: 1fr; gap: 30px; }

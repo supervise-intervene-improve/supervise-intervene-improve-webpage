@@ -37,7 +37,6 @@ ffmpeg2pass-*.log*
 *.bak
 *preview*.pdf
 *printout*.pdf
-/assets/images/fleet-results.webp
 /assets/images/interfaces.webp
 /assets/images/learning-protocol.webp
 /assets/images/paper-preview.webp

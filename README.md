@@ -1,36 +1,38 @@
-# Supervise, Intervene, Improve
+# Supervise, Intervene, Improve — Project Website
 
-Anonymous academic project website accompanying a manuscript submitted to ACM HRI 2027. Plain HTML, CSS, and JavaScript; no runtime dependencies, analytics, cookies, or external fonts.
+Project page for the paper *Supervise, Intervene, Improve: Interface Design for Human Oversight of Multiple Autonomous Robot Manipulators* (under review, ACM HRI 2027).
 
-## Build and preview
+**Website:** https://supervise-intervene-improve.github.io/supervise-intervene-improve-webpage/
+**Code:** https://github.com/supervise-intervene-improve/Supervise-Intervene-Improve
 
-Requires Python 3.10 or newer. Deployment uses Python 3.12.
+The site is plain HTML, CSS, and JavaScript with no runtime dependencies, analytics, cookies, or external fonts.
+
+## Local preview
+
+Requires Python 3.10 or newer.
 
 ```sh
 python scripts/build_site.py
 python scripts/serve_site.py --directory dist --base-path /supervise-intervene-improve-webpage/ --port 8001
 ```
 
-Open http://localhost:8001/supervise-intervene-improve-webpage/. The preview supports video byte-range requests and seeking. Stop it with Ctrl+C.
+Then open http://localhost:8001/supervise-intervene-improve-webpage/.
 
-The build validates optimized video hashes and the 95 MiB per-file limit, then copies only the approved assets into `dist/`. That generated directory is replaced on each build and excluded from Git. Relative URLs support the repository subpath without a bundler or hard-coded asset prefix.
+`build_site.py` checks every video against `assets/videos/manifest.json` (size and SHA-256) and copies only the files listed in `scripts/site-assets.json` into `dist/`.
 
 ## Deployment
 
-`.github/workflows/deploy-pages.yml` builds and deploys `dist/` through GitHub Actions on pushes to `main` or manual dispatch. In repository Settings > Pages, select **GitHub Actions** as the source. No `gh-pages` branch is used. `.nojekyll` is included in the artifact.
+Pushing to `main` runs `.github/workflows/deploy-pages.yml`, which builds `dist/` and publishes it with GitHub Pages (source: GitHub Actions).
 
-## Editing
+## Layout
 
-- `index.html`: page content, figures, metadata, and the marked resource-URL block. Header resource links remain disabled; the footer links to the anonymous local paper. Enable resources only when real anonymous targets exist.
-- `assets/css/`: page and demonstration styles.
-- `assets/js/main.js`: resource states and figure enlargement.
-- `assets/js/demonstrations.js`: the shared video interaction and complete card/environment mapping. VR-PointCloud and Kinesthetic Teaching reuse the same two recordings.
-- `assets/videos/demonstrations/`: ten optimized H.264 MP4 files serving twelve card/environment combinations. Videos use metadata preloading, native controls, contained aspect ratios, and pause on switching or closing.
-- `assets/images/`: figures, charts, favicon, and matching video posters.
-- `assets/paper/paper.pdf`: anonymous manuscript.
-- `assets/videos/manifest.json`: optimized video sizes and SHA-256 checksums.
-- `scripts/site-assets.json`: explicit list of assets included in production. Update it when adding or removing an asset.
+| Path | Contents |
+|---|---|
+| `index.html` | Page content |
+| `assets/css/`, `assets/js/` | Styles, figure viewer, and video demonstrations |
+| `assets/images/` | Figures and video posters |
+| `assets/videos/demonstrations/` | Demonstration videos (H.264 MP4) |
+| `assets/supplementary/` | Supplementary material (PDF) |
+| `scripts/` | Build and local preview scripts |
 
-For new demonstrations, add optimized MP4s and matching posters, update the shared mapping and manifests, then test both task tabs under the repository subpath. Preserve original recordings outside the publication tree. Do not commit original media, private reports, local tooling, editor state, credentials, or generated previews.
-
-Maintain anonymous authorship and inspect visible content and asset metadata before replacing the manuscript or media. Scientific claims and chart data must remain faithful to the manuscript.
+When adding or replacing an asset, update `scripts/site-assets.json`; for videos, also update `assets/videos/manifest.json`.
